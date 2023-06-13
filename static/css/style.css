@@ -1,0 +1,32 @@
+.mylist > li {
+    font-size: 20px;
+    list-style: none;
+    border-bottom: 6px solid dodgerblue;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    margin-bottom: 5px;
+    width: 33%;
+    height: 150px;
+    margin-right: 10px;
+}
+
+.mylist  li a{
+    padding: 3px 6px;
+}
+.mylist  li span{
+    padding: 3px 6px;
+}
+
+@media only screen and (max-width: 470px) {
+    .mylist > li {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .mylist {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+  }
