@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-3">
+    <h4> All about {{contact.firstName}}</h4>
+    <div class="card" style="width: 30%;" >
+        <div class="card-header">{{contact.firstName}}</div>
+        <div class="card-body">
+            <div class="card-image">
+                <img src="{{contact.image.url}}" width="300" alt="">
+            </div>
+            <div class="card-text">{{contact.lastName}}</div>
+        </div>
+        <div class="card-footer">+998 {{contact.phonenumber}}</div>
+    </div>
+</div>
+{% endblock content %}

@@ -31,3 +31,13 @@ class City(models.Model):
     name = models.CharField(max_length=30)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     population = models.PositiveIntegerField()
+
+class Contact(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    firstName = models.CharField(max_length=20)
+    lastName = models.CharField(max_length=20)
+    image = models.ImageField(upload_to='contact/')
+    phonenumber = models.IntegerField()
+
+    def __str__(self):
+        return self.firstName
