@@ -4,6 +4,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import NeedHelp, Street, City, Contact
 from django.db.models import Q, F
+from django.core.paginator import Paginator, EmptyPage
 from .forms import ContactForm
 from django.urls import reverse_lazy
 
@@ -20,6 +21,7 @@ class ContactList(generic.ListView):
     template_name = 'orm.html'
     model = Contact
     context_object_name = 'contacts'
+    paginate_by = 3
 
 class AddContact(generic.CreateView):
     template_name = 'new.html'
@@ -43,6 +45,14 @@ def delete_contact(request, contact_id):
 	contact = Contact.objects.get(id=contact_id)
 	contact.delete()
 	return redirect('contacts')
+
+def search(request):
+     if request.method == 'POST':
+          search = request.POST['qidir']
+          contact = Contact.objects.filter(firstName__contains=search)
+          street = Street.objects.filter(streetName__contains=search)
+          return render(request, 'search.html', {'searched':search, 'contact':contact, 'street':street})
+          
 
 def stats_chart(request):
     labels = []

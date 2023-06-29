@@ -48,8 +48,9 @@
           </li>
           --------->
         </ul>
-        <form class="d-flex align-items-center" role="search">
-          <input class="form-control me-2" type="search" placeholder="qidirish..." aria-label="Search">
+        <form class="d-flex align-items-center" method="POST" action="{% url 'search' %}" role="search">
+          {% csrf_token %}
+          <input class="form-control me-2" name="qidir" type="search" placeholder="qidirish..." aria-label="Search">
           <button class="btn btn-success" type="submit">Qidirish</button>
           <button class="btn btn-warning mx-1" type="submit">Account</button>
         </form>

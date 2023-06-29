@@ -36,6 +36,19 @@
 <div class="d-flex">
 <a class="btn btn-success py-2 px-5" href="{% url 'addnew' %}"> Add new </a>
 </div>
+<div class='pagination justify-content-center'>
+    {% if page_obj.has_previous %}
+      <a class="btn btn-primary btn-sm" href='{% url "contacts" %}?page={{ page_obj.previous_page_number }}'>Previous </a>
+    {% endif %}
+
+    <span class='mx-4'>
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+      <a class="btn btn-primary btn-sm" href='{% url "contacts" %}?page={{ page_obj.next_page_number }}' > Next</a>
+    {% endif %}
+  </div>
 {% else %}
 <h4 class="text-center pt-5"> No any contacts yet</h4>
 {% endif %}
